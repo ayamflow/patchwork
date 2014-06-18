@@ -1,0 +1,51 @@
+{
+  "name": "patchwork-boilerplate",
+  "version": "0.0.0",
+  "description": "A gulp + sass + vuejs boilerplate",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ayamflow/patchwork"
+  },
+  "keywords": [
+    "boilerplate",
+    "vue.js",
+    "gulp",
+    "sass"
+  ],
+  "author": "= <=>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayamflow/patchwork/issues"
+  },
+  "browserify": {
+    "transform": [
+      "html-browserify"
+    ]
+  },
+  "browserify-shim": {
+    
+  },
+  "devDependencies": {
+    "gulp": "~3.8.1",
+    "watchify": "~0.10.2",
+    "gulp-plumber": "~0.6.3",
+    "gulp-htmlbuild": "~0.2.0",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-sass": "~0.7.2",
+    "vinyl-source-stream": "~0.1.1",
+    "napa": "~0.4.1",
+    "browserify": "~4.1.11",
+    "browserify-shim": "~3.5.0",
+    "gulp-cached": "0.0.3"
+  },
+  "dependencies": {
+    "vue": "~0.10.5"
+  },
+  "scripts": {
+    "install": "napa"
+  },
+  "napa": {
+    "greensock": "greensock/GreenSock-JS"
+  }
+}
