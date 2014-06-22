@@ -1,12 +1,12 @@
 
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    cache = require('gulp-cache'),
+    cache = require('gulp-cached'),
     browserify = require('browserify'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
-    bundleLogger = require('../util/bundleLogger'),
-    handleErrors = require('../util/handleErrors');
+    bundleLogger = require('../utils/bundleLogger'),
+    handleErrors = require('../utils/handleErrors');
 
 gulp.task('browserify', function() {
     var bundler = (global.isWatching ? watchify : browserify)('./src/index.js');

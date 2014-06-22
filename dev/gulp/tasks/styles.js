@@ -1,10 +1,10 @@
 
 var gulp = require('gulp'),
-    cache = require('gulp-cache'),
+    cache = require('gulp-cached'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    handleErrors = require('../util/handleErrors');
+    handleErrors = require('../utils/handleErrors');
 
 gulp.task('styles', function() {
     gulp.src('./src/**/*.scss')
