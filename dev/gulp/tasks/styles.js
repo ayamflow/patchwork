@@ -1,18 +1,18 @@
 
 var gulp = require('gulp'),
-    cache = require('gulp-cached'),
+    // cache = require('gulp-cached'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    handleErrors = require('../utils/handleErrors');
+    autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('styles', function() {
-    gulp.src('./src/**/*.scss')
-    .pipe(cache('styling'))
-    .pipe(plumber({
-        errorHandler: handleErrors
+    gulp.src('./sass/styles.scss')
+    .pipe(plumber())
+    // .pipe(cache('styling'))
+    .pipe(sass({
+        style: 'expanded',
+        sourceComments: 'nope'
     }))
-    .pipe(sass({style: 'expanded'}))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./build/'));
 });
