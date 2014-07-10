@@ -1,3 +1,9 @@
+/*
+    TODO
+    - add analytics
+    - allow to use CDN libs
+*/
+
 /*var gulp = require('gulp'),
     htmlbuild = require('gulp-htmlbuild');
 

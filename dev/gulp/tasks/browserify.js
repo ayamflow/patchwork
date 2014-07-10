@@ -1,7 +1,7 @@
 
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    // cache = require('gulp-cached'),
+    cache = require('gulp-cached'),
     browserify = require('browserify'),
     watchify = require('watchify'),
     remapify = require('remapify'),
@@ -11,7 +11,7 @@ gulp.task('browserify', function() {
     var bundler = (global.isWatching ? watchify : browserify)('./src/index.js');
 
     var basePath = require('path').resolve(__dirname + '../../../');
-    
+
     bundler.plugin(remapify, [{
         src: './src/common/**/*.js',
         expose: 'common',
@@ -33,6 +33,6 @@ function bundle(bundler, name, dest) {
         .bundle({debug: false}) // source maps
         .pipe(plumber())
         .pipe(source(name))
-        // .pipe(cache('bundling'))
+        .pipe(cache('bundling'))
         .pipe(gulp.dest(dest));
 }
