@@ -1,0 +1,33 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+
+# URL rewrite for SEO/Snapshots
+# RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(.*)$
+# RewriteRule ^$ /snapshots/index.html? [L,NC]
+# RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(.*)$
+# RewriteRule ^(.*)$ /snapshots/$1.html? [L,NC]
+
+# RewriteCond %{REQUEST_FILENAME} !snapshots
+# RewriteCond %{REQUEST_FILENAME} !_escaped_fragment_
+
+# Rewrite everything (except file or directory) to index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.html [L]
+
+# Video types
+# AddType video/mp4 .mp4 .m4v
+# AddType video/ogg .ogv
+# AddType video/webm .webm
+
+# Add GZIP compression
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
