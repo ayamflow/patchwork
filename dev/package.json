@@ -1,6 +1,6 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A gulp + sass + vuejs boilerplate",
   "main": "index.js",
   "repository": {
@@ -11,7 +11,9 @@
     "boilerplate",
     "vue.js",
     "gulp",
-    "sass"
+    "sass",
+    "scss",
+    "starter"
   ],
   "author": "= <=>",
   "license": "MIT",
@@ -20,10 +22,18 @@
   },
   "browserify": {
     "transform": [
-      "html-browserify"
+      "html-browserify",
+      "browserify-shim"
     ]
   },
-  "browserify-shim": {},
+  "browser": {
+    "TweenMax": "./node_modules/greensock/src/minified/TweenMax.min.js",
+    "fit": "./node_modules/fit/fit.min.js"
+  },
+  "browserify-shim": {
+    "TweenMax": "TweenMax",
+    "fit": "fit"
+  },
   "devDependencies": {
     "gulp": "~3.8.1",
     "watchify": "~0.10.2",
@@ -36,15 +46,20 @@
     "browserify": "~4.1.11",
     "browserify-shim": "~3.5.0",
     "gulp-cached": "0.0.3",
-    "gulp-notify": "~1.3.1"
+    "gulp-notify": "~1.3.1",
+    "remapify": "^0.1.6"
   },
   "dependencies": {
-    "vue": "~0.10.5"
+    "vue": "~0.10.5",
+    "superagent": "~0.18.1",
+    "page": "~1.3.7",
+    "bindall-standalone": "~1.0.4"
   },
   "scripts": {
     "install": "napa"
   },
   "napa": {
-    "greensock": "greensock/GreenSock-JS"
+    "greensock": "greensock/GreenSock-JS",
+    "fit": "soulwire/fit.js"
   }
 }
