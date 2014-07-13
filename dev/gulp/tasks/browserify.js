@@ -12,11 +12,12 @@ gulp.task('browserify', function() {
 
     var basePath = require('path').resolve(__dirname + '../../../');
     
-    bundler.plugin(remapify, [{
-        src: './src/common/**/*.js',
+    // Expose all files in common as 'common/file'
+    bundler.plugin(remapify, {
+        src: './**/*.js',
         expose: 'common',
-        cwd: __dirname + '../../../'
-    }]);
+        cwd: __dirname + '/../../src/common/'
+    });
 
     var file = 'build.js',
         folder = './build/';
