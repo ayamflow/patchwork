@@ -1,7 +1,7 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "0.0.1",
-  "description": "A gulp + sass + vuejs boilerplate",
+  "version": "0.1.0",
+  "description": "A gulp + sass + vuejs boilerplate.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -28,38 +28,55 @@
   },
   "browser": {
     "TweenMax": "./node_modules/greensock/src/minified/TweenMax.min.js",
-    "fit": "./node_modules/fit/fit.min.js"
+    "TweenMax.ScrollToPlugin": "./node_modules/greensock/src/minified/plugins/ScrollToPlugin.min.js",
+    "fit": "./node_modules/fit/fit.min.js",
+    "forEach": "./node_modules/foreach.js/dist/foreach.min.js"
   },
   "browserify-shim": {
     "TweenMax": "TweenMax",
-    "fit": "fit"
-  },
-  "devDependencies": {
-    "gulp": "~3.8.1",
-    "watchify": "~0.10.2",
-    "gulp-plumber": "~0.6.3",
-    "gulp-htmlbuild": "~0.2.0",
-    "gulp-autoprefixer": "0.0.7",
-    "gulp-sass": "~0.7.2",
-    "vinyl-source-stream": "~0.1.1",
-    "napa": "~0.4.1",
-    "browserify": "~4.1.11",
-    "browserify-shim": "~3.5.0",
-    "gulp-cached": "0.0.3",
-    "gulp-notify": "~1.3.1",
-    "remapify": "^0.1.6"
-  },
-  "dependencies": {
-    "vue": "~0.10.5",
-    "superagent": "~0.18.1",
-    "page": "~1.3.7",
-    "bindall-standalone": "~1.0.4"
-  },
-  "scripts": {
-    "install": "napa"
+    "fit": "fit",
+    "forEach": "forEach",
+    "vue-query": "vue-query"
   },
   "napa": {
     "greensock": "greensock/GreenSock-JS",
-    "fit": "soulwire/fit.js"
+    "fit": "soulwire/fit.js",
+    "foreach.js": "toddmotto/foreach",
+    "vue-query": "ayamflow/vue-query"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "watchify": "*",
+    "gulp-plumber": "*",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-sass": "*",
+    "vinyl-source-stream": "*",
+    "napa": "*",
+    "browserify": "^5.9.1",
+    "browserify-shim": "*",
+    "gulp-notify": "^1.4.0",
+    "vue-debug": "*",
+    "html-browserify": "*",
+    "gulp-clean": "*",
+    "gulp-jshint": "^1.8.2",
+    "gulp-util": "^3.0.0",
+    "gulp-uglify": "*",
+    "pretty-hrtime": "*",
+    "remapify": "*",
+    "jshint-stylish": "*",
+    "debounce": "*",
+    "vue": "^0.10.6",
+    "yargs": "*"
+  },
+  "dependencies": {
+    "extend": "*",
+    "vue": "~0.10.5",
+    "superagent": "~0.18.1",
+    "page": "~1.3.7",
+    "bindall-standalone": "~1.0.4",
+    "component-emitter": "~1.1.3"
+  },
+  "scripts": {
+    "install": "napa"
   }
 }

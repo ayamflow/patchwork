@@ -1,0 +1,36 @@
+%project-title {
+    h1, h2 {
+        white-space: nowrap;
+        user-select: none;
+        text-align: center;
+
+        span {
+            display: inline-block;
+            @extend %unglitch-3d;
+        }
+    }
+
+    h1 {
+        @extend %avenir-demi;
+        font-size: 42px;
+        text-transform: uppercase;
+        color: $white;
+        margin: 4px;
+    }
+
+    h2 {
+        @extend %avenir-regular;
+        font-size: 18px;
+        color: $grey-medium;
+        margin: 7px;
+    }
+
+    .dash {
+        position: relative;
+        left: 50%;
+        margin-left: -10px;
+        width: 20px;
+        height: 4px;
+        @extend %unglitch-3d;
+    }
+}

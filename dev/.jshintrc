@@ -1,0 +1,14 @@
+{
+    "node": true,
+    "browser": true,
+    "globals": {
+        "TweenLite": false,
+        "TimelineMax": false,
+        "Expo": false,
+        "Back": false,
+        "Bounce": false,
+        "Cubic": false,
+        "Linear": false,
+        "google": false
+    }
+}

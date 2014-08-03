@@ -1,37 +1,58 @@
+// Uncomment to debug browserify + shim
+// process.env.BROWSERIFYSHIM_DIAGNOSTICS = 1;
 
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    cache = require('gulp-cached'),
+    gutil = require('gulp-util'),
+    notify = require("gulp-notify"),
+    argv = require('yargs').argv,
     browserify = require('browserify'),
     watchify = require('watchify'),
     remapify = require('remapify'),
+    gStreamify = require('gulp-streamify'),
+    uglify = require('gulp-uglify'),
+    bundleLogger = require('../utils/bundleLogger'),
+    handleErrors = require('../utils/handleErrors'),
     source = require('vinyl-source-stream');
 
-gulp.task('browserify', function() {
-    var bundler = (global.isWatching ? watchify : browserify)('./src/index.js');
+var env = argv.env != "production";
 
-    // Expose all files in common as 'common/file'
-    bundler.plugin(remapify, {
+gulp.task('browserify', function()
+{
+    var b = browserify("./src/index.js",
+    {
+        cache: {},
+        packageCache: {},
+        debug: env
+    }),
+    file = 'build.js',
+    folder = './build/';
+
+    var bundler = global.isWatching ? watchify(b) : b;
+
+    bundler.plugin(remapify, [{
         src: './**/*.js',
         expose: 'common',
         cwd: __dirname + '/../../src/common/'
-    });
+    },
+    {
+        src: './**/*.js',
+        expose: 'base',
+        cwd: __dirname + '/../../src/base/'
+    }]);
 
-    var file = 'build.js',
-        folder = './build/';
+    var bundle = function() {
+        bundleLogger.start();
 
-    if(global.isWatching) {
-        bundler.on('update', bundle.bind(null, bundler, file, folder));
-    }
+        return bundler.bundle()
+        .on('error', handleErrors)
+        .pipe(source(file))
+        .pipe(argv.env != "production" ? gutil.noop() : gStreamify(uglify()))
+        .pipe(gulp.dest(folder))
+        .on('end', bundleLogger.end);
+    };
 
-    return bundle(bundler, file, folder);
+    if(global.isWatching) bundler.on('update', bundle);
+
+    return bundle();
 });
-
-function bundle(bundler, name, dest) {
-    return bundler
-        .bundle({debug: false}) // source maps
-        .pipe(plumber())
-        .pipe(source(name))
-        .pipe(cache('bundling'))
-        .pipe(gulp.dest(dest));
-}

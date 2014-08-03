@@ -1,5 +1,10 @@
 'use strict';
 
+/*
+    Utility functions
+    "The poor man's underscore"
+ */
+
 exports.item = function(array, id, property) {
     property = property || 'id';
     for(var i = 0; i < array.length; i++) {
@@ -37,4 +42,8 @@ exports.distSq = function(p1, p2) {
 
 exports.sign = function(value) {
     return value > 0 ? 1 : value < 0 ? -1 : 0;
+};
+
+exports.toFixed = function(value, fixed) {
+    return +value.toFixed(fixed);
 };

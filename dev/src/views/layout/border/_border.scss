@@ -1,0 +1,44 @@
+$border-size: 20px;
+
+.pa-border {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* nope on IE dammit */
+
+    .top, .left, .bottom, .right {
+        position: absolute;
+        background: white;
+    }
+
+    .top, .bottom {
+        height: 0;
+        width: 100%;
+        transition: height 0.4s $ease-expo-out;
+    }
+    .left, .right {
+        width: 0;
+        height: 100%;
+        transition: width 0.4s $ease-expo-out;
+    }
+
+    .top, .left {
+        top: 0;
+        left: 0;
+    }
+    .bottom, .right {
+        bottom: 0;
+        right: 0;
+    }
+
+    &.active {
+        .top, .bottom {
+            height: $border-size;
+        }
+        .left, .right {
+            width: $border-size;
+        }
+    }
+}

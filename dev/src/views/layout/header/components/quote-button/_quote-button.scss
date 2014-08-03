@@ -1,0 +1,43 @@
+.quote-button {
+    display: block;
+    position: absolute;
+    top: 94px;
+    right: 80px;
+    padding: 13px;
+    opacity: 0.8;
+    transition: opacity 0.6s;
+
+    .line {
+        background: white;
+        position: absolute;
+
+        &.top, &.bottom {
+            height: 3px;
+            width: 100%;
+        }
+
+        &.left, &.right {
+            width: 3px;
+            height: 100%;
+        }
+
+        &.top, &.left {
+            top: 0;
+            left: 0;
+        }
+
+        &.bottom, &.right {
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .text {
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}

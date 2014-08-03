@@ -1,0 +1,6 @@
+$fonts-folder: '../assets/fonts';
+@include font-face('FontName', #{$fonts-folder}/'FontName/fontname');
+
+%font-name {
+    font-family: 'FontName';
+}

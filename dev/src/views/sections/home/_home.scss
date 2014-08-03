@@ -1,0 +1,122 @@
+#home {
+    section {
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        img {
+            height: 100%;
+        }
+
+        .content {
+            width: 70%;
+            margin: 0 auto;
+            position: relative;
+            transform: translateZ(0);
+
+            h2, p {
+                text-align: center;
+            }
+
+            .separator {
+                width: 100%;
+                height: 6px;
+                background: white;
+            }
+
+            p {
+                margin: 0 auto;
+            }
+
+            .buttons {
+                text-align: center;
+                margin-top: 50px;
+                @extend %clearfix;
+
+                .previous-button, .next-button, .read-more-button {
+                    .text {
+                        text-transform: uppercase;
+                        opacity: 0.5;
+                        transition: opacity 0.5s;
+                    }
+                    .line {
+                        margin-top: 10px;
+                        width: 100%;
+                        height: 8px;
+                        position: relative;
+                        background: rgba(255, 255, 255, 0.5);
+                        backface-visibility: hidden;
+
+                        .over {
+                            transform: scaleX(0);
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: white;
+                            transition: transform 0.5s $ease-expo-out;
+                        }
+                    }
+
+                    &:hover {
+                        .text {
+                            opacity: 1;
+                        }
+                        .line .over {
+                            transform: scaleX(1);
+                        }
+                    }
+                }
+
+                .previous-button, .next-button {
+                    width: 150px;
+                    .text {
+                        font-size: 14px;
+                        @include max-screen(1300px) {
+                            font-size: 12px;
+                        }
+                        @include max-screen(1100px) {
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                .previous-button {
+                    float: left;
+                    text-align: left;
+
+                    .over {
+                        transform-origin: left center;
+                    }
+                }
+                .next-button {
+                    float: right;
+                    text-align: right;
+
+                    .over {
+                        transform-origin: right center;
+                    }
+                }
+                .read-more-button {
+                    display: inline-block;
+                    font-size: 24px;
+                    transform-origin: center;
+
+                    @include max-screen(1700px) {
+                        font-size: 22px;
+                    }
+                    @include max-screen(1500px) {
+                        font-size: 20px;
+                    }
+                    @include max-screen(1300px) {
+                        font-size: 18px;
+                    }
+                    @include max-screen(1100px) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

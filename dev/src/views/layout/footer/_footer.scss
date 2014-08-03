@@ -1,0 +1,62 @@
+footer {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    width: calc(100% - 160px);
+    opacity: 0;
+    transition: opacity 0.35s;
+    @extend %clearfix;
+
+    &.active {
+        opacity: 1;
+    }
+
+    &.pinned {
+        position: fixed;
+    }
+
+    .block {
+        float: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin-right: 10px;
+        padding-top: 20px;
+        @extend %clearfix;
+
+        &.left {
+            width: 110px
+        }
+
+        &.middle {
+            width: calc(100% - #{110px + 80px + 20px});
+        }
+
+        &.right {
+            width: 80px;
+            margin-right: 0;
+            text-align: right;
+        }
+
+        .infos {
+            float: left;
+            font-size: 12px;
+            color: #858585;
+            margin-right: 40px;
+
+            a {
+                color: #858585;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: white;
+                }
+            }
+
+
+
+            h4 {
+                margin: 0 0 7px 0;
+            }
+        }
+    }
+
+}

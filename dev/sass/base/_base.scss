@@ -1,0 +1,37 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    @extend %full-size;
+}
+
+body {
+    color: white;
+    background: black;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+input[type=text]:focus, textarea:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

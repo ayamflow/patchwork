@@ -1,0 +1,5 @@
+@mixin font-size($sizeValue: 1.6px) {
+    $pxSize: $sizeValue / 1px; // Remove px
+    font-size: ($pxSize) * 1px;
+    font-size: $pxSize * 1rem;
+}

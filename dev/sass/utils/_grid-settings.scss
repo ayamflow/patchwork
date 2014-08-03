@@ -1,0 +1,11 @@
+@import "base/variables";
+
+$column: 127px;
+$gutter: 10px;
+$grid-columns: 10;
+$max-width: calc(100% - 2 * #{$grid-margin});
+
+// DEBUG
+// $visual-grid: true;
+$visual-grid-index: front;
+$visual-grid-color: #1abc9c;

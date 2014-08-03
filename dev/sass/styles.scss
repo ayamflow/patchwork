@@ -1,7 +1,36 @@
-@import "utils/normalize-custom";
-@import "utils/mixins/font-face";
+/*
+    Bourbon imports
+    
+    Bourbon mixins aren't not used but it is a dependency for Neat
+    Neat is a simple grid system
+    Grid-settings is the configuration file for Neat
+*/
+@import 'bourbon/bourbon';
+@import 'utils/grid-settings';
+@import 'neat/neat';
 
+/*
+    Base styles
+    html, fonts, colors...
+ */
 @import "base/fonts";
+@import "base/colors";
+@import "base/variables";
+
+/*
+    Utils
+    CSS eases, normalize,
+    SCSS mixins & extends
+ */
+@import "utils/eases";
+@import "utils/normalize-custom";
+@import "utils/extends/extends";
+@import "utils/mixins/font-face";
+@import "utils/mixins/appearance";
+
 @import "base/base";
 
-/* Add project specific styles here */
+/*
+    Sections and components styles
+ */
+@import "src/views/sections/home/home";

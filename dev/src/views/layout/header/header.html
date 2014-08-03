@@ -1,0 +1,22 @@
+<div class="background"></div>
+<div class="header-content" v-on="mouseenter: onMouseEnter, mouseleave: onMouseLeave">
+    <h1><a href="/" title="Paragon, a sound of matter"><img src="assets/images/logo.svg" alt="Paragon, a sound of matter"/></a></h1>
+    <ul>
+        <li>
+            <a href="/about" v-class="selected: route == 'about'" v-component="menu-button">About</a>
+        </li>
+        <li>
+            <a href="/products" v-class="selected: route == 'products'" v-component="menu-button">Products</a>
+        </li>
+        <li>
+            <a href="/contact" v-class="selected: route == 'contact'" v-component="menu-button">Contact</a>
+        </li>
+        <li>
+            <a href="/emmys" v-component="menu-button">Emmy's</a>
+        </li>
+    </ul>
+
+    <div v-component="quote-button"></div>
+
+    <div v-component="search-bar"></div>
+</div>

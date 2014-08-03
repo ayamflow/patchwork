@@ -1,0 +1,22 @@
+#about {
+    background-image: url(../assets/images/texture-noise-dark.jpg);
+    padding-bottom: 58px;
+    .about-section {
+        background-image: url(../assets/images/texture-noise.jpg);
+        .content {
+            padding: 55px 50px;
+            p {
+                text-align: center;
+                margin: 0 auto 20px auto;
+                font-size: 18px;
+                max-width: 1000px;
+
+
+                &.small {
+                    font-size: 14px;
+                    color: #d4d4d4;
+                }
+            }
+        }
+    }
+}

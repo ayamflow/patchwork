@@ -3,6 +3,10 @@
 var Vue = require('vue'),
     request = require('superagent');
 
+/*
+    Allow to import inline SVG without the visual code bloat.
+    v-svg="assets/logo.svg"
+ */
 module.exports = {
     isLiteral: true,
     bind: function() {
