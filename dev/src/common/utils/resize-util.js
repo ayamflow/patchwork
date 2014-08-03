@@ -28,7 +28,6 @@ resize.removeListener = function(listener) {
     if(listener) emitter.removeListener('resize', listener);
 };
 
-emitter.setMaxListeners(50);
 resize.resize = debounce(resize.applyResize, 150);
 resize.applyResize();
 window.addEventListener('resize', resize.resize.bind(resize));

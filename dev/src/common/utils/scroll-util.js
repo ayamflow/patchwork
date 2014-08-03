@@ -32,7 +32,6 @@ scrollUtil.removeListener = function(listener) {
     if(listener) emitter.removeListener('scroll', listener);
 };
 
-emitter.setMaxListeners(50);
 scrollUtil.scroll = debounce(scrollUtil.doScroll, frequency);
 scrollUtil.doScroll();
 window.addEventListener('scroll', scrollUtil.scroll.bind(scrollUtil));
