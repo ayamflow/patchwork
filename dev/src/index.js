@@ -36,9 +36,9 @@ function init() {
 
         components: {
             /* LAYOUT */
-            
+
             /* COMPONENTs */
-            
+
             /* PAGES */
 
             /* COMMON */
@@ -52,7 +52,7 @@ function init() {
         ready: function() {
             router.on('router:update', this.onRouteUpdate.bind(this));
 
-            router.addRoute(require('./views/sections/home/home').route.path);
+            router.addRoute(require('./views/sections/home/home').route);
             router.setDefaultRoute('home');
         },
 

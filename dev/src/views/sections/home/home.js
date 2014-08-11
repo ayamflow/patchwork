@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = extend(true, {}, section, {
-    id: 'home',
     template: require('./home.html'),
     route: {
+        id: 'home',
         transitionMode: 'outAndAfterIn',
         path: '/home'
     },

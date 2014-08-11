@@ -26,11 +26,18 @@ module.exports = extend({
     defaultRoute: '/',
 
     /*
+        Reference to all the routes
+    */
+    routeIds: [],
+
+    /*
         Registers the route with the specified path/pattern (express-like regexp)
+        route: infos as {id: "route-id", path: "/route"} or {id: "route-id", path: "/route/:id"}
      */
-    addRoute: function(path) {
-        page(path, this.onRoute.bind(this));
-        if(verbose) console.debug('[router] add route "' + path + '"');
+    addRoute: function(route) {
+        this.routeIds.push({id: route.id, path: route.path});
+        page(route.path, this.onRoute.bind(this));
+        if(verbose) console.debug('[router] add route "' + route.path + '"');
     },
 
     /*
@@ -77,7 +84,14 @@ module.exports = extend({
         }.bind(this));
     },
 
-    getCurrentRoute: function(path) {
-        return path.replace("/", "");
-    },
+    getCurrentRouteId: function(path) {
+        var match, id;
+        forEach(this.routeIds, function(value, index){
+            match = path.match(new RegExp((value.path.replace(/:[a-z]+/g, '[a-z-]+')).replace(/\//g, '\\/'), 'g'));
+            if(match && match.length > 0) {
+                id = value.id;
+            }
+        });
+        return id;
+    }
 }, new EventEmitter());

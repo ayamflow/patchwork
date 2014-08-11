@@ -11,14 +11,14 @@
 var TweenMax = require('TweenMax');
 
 module.exports = {
-    /* ===================================================
-        VUE STUFF
-    ====================================================== */
+    /*
+        Origin v-view - must be kept in sync with the vue repo
+    */
     bind: function () {
         // track position in DOM with a ref node
         var el       = this.raw = this.el,
             parent   = el.parentNode,
-            ref      = this.ref = document.createComment('hki-view');
+            ref      = this.ref = document.createComment('pw-view');
         if(!parent) return;
 
         parent.insertBefore(ref, el);
@@ -71,9 +71,9 @@ module.exports = {
         }
     },
 
-    /* ===================================================
-        HKI STUFF
-    ====================================================== */
+    /*
+        Transition timings stuff
+    */
 
     transition: function() {
         if(!this.nextChildVM) return;
