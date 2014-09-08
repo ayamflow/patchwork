@@ -1,5 +1,8 @@
 'use strict';
 
+var extend = require('extend'),
+    section = require('base/section');
+
 module.exports = extend(true, {}, section, {
     template: require('./home.html'),
     route: {
