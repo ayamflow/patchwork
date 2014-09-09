@@ -5,7 +5,7 @@ var Vue = require('vue'),
     extend = require('extend'),
     forEach = require('forEach'),
     EventEmitter = require('component-emitter'),
-    verbose = false;
+    verbose = true;
 
 /*
     Router based on page.js,
@@ -66,7 +66,7 @@ module.exports = extend({
      */
     onRoute: function(context) {
         this.context.params = context.params;
-        this.context.id = this.getCurrentRoute(context.path);
+        this.context.id = this.getCurrentRouteId(context.path);
         this.context.path = context.path;
 
         if(verbose) console.debug('[router] onRoute', this.context);

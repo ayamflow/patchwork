@@ -22,16 +22,27 @@ module.exports = {
         */
 
         /*
-            Starts the transitionIn
+            Can be overriden if the sections transition needs to be different depending on the previous route. Handle with care !
+         */
+        getTransitionMode: function(previousRoute) {
+            return this.$options.route.transitionMode;
+        },
+
+        /*
+            Starts the transitionIn, override it if you need to play something else than the default Timeline depending on previous route.
+            ex:
+                if(previousRoute && previousRoute.id === 'home') this.tlTransition.play();
+                else TweenMax.fromTo(this.$el, 1, {alpha: 0}, {alpha: 1, onComplete: this.onTransitionInComplete, onCompleteScope: this});
         */
-        playTransitionIn: function() {
+        playTransitionIn: function(previousRoute) {
+            console.log('Section - playTransitionIn');
             this.tlTransition.play();
         },
 
         /*
-            Starts the transitionOut
+            Starts the transitionOut, override it if you need to play something else than the default Timeline depending on next route.
         */
-        playTransitionOut: function() {
+        playTransitionOut: function(nextRoute) {
             this.tlTransition.reverse();
         },
 
@@ -54,19 +65,18 @@ module.exports = {
             PRIVATE API
             Internal behavior
         */
-        transitionIn: function() {
+        transitionIn: function(previousRoute) {
             this.$el.style.visibility = 'visible';
-            this.playTransitionIn();
+            this.playTransitionIn(previousRoute);
         },
         onTransitionInComplete: function() {
-            this.$emit('$page.transitionInComplete');
+            this.$emit('section:transitionInComplete');
         },
-        transitionOut: function() {
-            this.playTransitionOut();
+        transitionOut: function(nextRoute) {
+            this.playTransitionOut(nextRoute);
         },
         onTransitionOutComplete: function() {
-            this.$emit('$page.transitionOutComplete');
-            console.log('transitionOutComplete', this.$options.route.id);
+            this.$emit('section:transitionOutComplete');
         },
         createTimeline: function() {
             this.tlTransition = new TimelineMax({
@@ -82,22 +92,42 @@ module.exports = {
                 onCompleteScope: this,
                 paused: true
             });
+
+            console.log('Section - createTimeline');
         },
         transitionsReady: function() {
             this.$root.$emit('section:transitionsReady');
+            console.log('Section - transitionsReady');
         },
-        domReady: function() {
-            // Double nextTick to wait for child VM to be rendered
-            Vue.nextTick(function() {
-                this.beforeTransitionIn(); // Override that bitch
-                this.createTimeline();
-                this.insertTweens(); // Override this
-                Vue.nextTick(this.transitionsReady.bind(this));
-            }.bind(this));
+        added: function() {
+            this.beforeTransitionIn(); // Override that bitch
+            this.createTimeline();
+            this.insertTweens(); // Override this
+
+            Vue.nextTick(this.transitionsReady.bind(this));
         }
     },
     created: function() {
         this.$el.style.visibility = 'hidden';
-        this.$on('hook:ready', Vue.nextTick.bind(this, this.domReady.bind(this)));
+
+        this.$once('hook:added', function() {
+            Vue.nextTick(this.added.bind(this));
+        });
+
+        this.$once('hook:routed', function() {
+            // If we want to handle preload or promises resolving
+        });
+
+        this.$once('hook:beforeDestroy', function() {
+            if(this.tlTransition) {
+                this.tlTransition.kill();
+                this.tlTransition = null;
+            }
+            if(this.tlTransitionOut) {
+                this.tlTransitionOut.kill();
+                this.tlTransitionOut = null;
+            }
+        });
+
     }
 };

@@ -8,7 +8,8 @@
     - transition In only
  */
 
-var TweenMax = require('TweenMax');
+var TweenMax = require('TweenMax'),
+    Vue = require('vue');
 
 module.exports = {
     /*
@@ -31,10 +32,11 @@ module.exports = {
         while (node = el.firstChild) {
             frag.appendChild(node);
         }
+        this.vm.$on('section:transitionsReady', this.onTransitionReady.bind(this));
     },
 
     update: function(value) {
-        if(!this.inner || this.isTransitionning) return;
+        if(!this.inner || this.isTransitionning || !value) return;
 
         var Ctor  = this.compiler.getOption('components', value);
         if (!Ctor) return;
@@ -54,32 +56,45 @@ module.exports = {
         // Add router params to nextChildVM
         this.nextChildVM.$options.route.params = this.vm.context.params;
 
+        // Routing params event
+        this.nextChildVM.$emit('hook:routed');
+
         // check if nextChildVM & previousChildVM are transition compatible, if not throw error
         this.el = this.nextChildVM.$el;
         if (this.compiler.init) {
             this.ref.parentNode.insertBefore(this.el, this.ref);
+            Vue.nextTick(this.viewModelAdded.bind(this));
         } else {
-            this.nextChildVM.$before(this.ref);
+            this.nextChildVM.$before(this.ref, this.viewModelAdded.bind(this));
         }
-
-        this.transition();
     },
 
     unbind: function() {
-        if (this.childVM) {
-            this.childVM.$destroy();
-        }
+        if (this.childVM) this.childVM.$destroy();
+        if (this.nextChildVM) this.nextChildVM.$destroy();
+        if (this.previousChildVM) this.previousChildVM.$destroy();
     },
 
     /*
         Transition timings stuff
     */
 
-    transition: function() {
+    viewModelAdded: function() {
+        this.nextChildVM.$emit('hook:added');
+    },
+
+    onTransitionReady: function() {
         if(!this.nextChildVM) return;
+        console.log("View - onTransitionReady");
+
+        this.transition();
+    },
+
+    transition: function() {
         this.isTransitionning = true;
         if(this.previousChildVM) {
-            switch(this.nextChildVM.$options.route.transitionMode) {
+            console.log("View - transition");
+            switch(this.nextChildVM.getTransitionMode(this.previousChildVM.$options.route)) {
                 case 'inAndAfterOut':
                     this.transitionInAndAfterOut();
                     break;
@@ -100,45 +115,42 @@ module.exports = {
         }
     },
 
-    transitionInOnly: function() {
-        console.log('transitionInOnly');
+    transitionInOnly: function(previousRoute) {
         this.scrollToTop();
-        this.nextChildVM.$once('$page.transitionInComplete', function(){
+        this.nextChildVM.$once('section:transitionInComplete', function(){
             this.onTransitionComplete();
         }.bind(this));
-        this.nextChildVM.transitionIn();
+        this.nextChildVM.transitionIn(previousRoute);
     },
 
     transitionOutAndAfterIn: function() {
-        this.previousChildVM.$once('$page.transitionOutComplete', function(){
-            this.previousChildVM.$destroy();
+        var nextRoute = this.nextChildVM.$options.route;
+        this.previousChildVM.$once('section:transitionOutComplete', function(){
             this.scrollToTop();
-            this.transitionInOnly();
+            this.previousChildVM.$destroy();
+            this.transitionInOnly(this.previousChildVM.$options.route);
         }.bind(this));
-        this.previousChildVM.transitionOut();
+        this.previousChildVM.transitionOut(this.nextChildVM.$options.route);
     },
 
     transitionInAndAfterOut: function() {
         this.scrollToTop();
-        this.nextChildVM.$once('$page.transitionInComplete', function(){
-            this.previousChildVM.$on('$page.transitionOutComplete', function(){
-                this.previousChildVM.$destroy();
+        this.nextChildVM.$once('section:transitionInComplete', function(){
+            this.previousChildVM.$on('section:transitionOutComplete', function(){
                 this.onTransitionComplete();
             }.bind(this));
-            this.previousChildVM.$broadcast('$page.transitionOutStart');
-            this.previousChildVM.transitionOut();
+            this.previousChildVM.transitionOut(this.nextChildVM.$options.route);
         }.bind(this));
-        this.nextChildVM.transitionIn();
+        this.nextChildVM.transitionIn(this.previousChildVM.$options.route);
     },
 
     transitionInAndOutTogether: function() {
         this.scrollToTop();
-        this.previousChildVM.$once('$page.transitionOutComplete', function(){
-            this.previousChildVM.$destroy();
+        this.previousChildVM.$once('section:transitionOutComplete', function(){
             this.onTransitionComplete();
         }.bind(this));
-        this.previousChildVM.transitionOut();
-        this.nextChildVM.transitionIn();
+        this.previousChildVM.transitionOut(this.nextChildVM.$options.route);
+        this.nextChildVM.transitionIn(this.previousChildVM.$options.route);
     },
 
     scrollToTop: function() {
@@ -148,5 +160,10 @@ module.exports = {
     onTransitionComplete: function() {
         this.isTransitionning = false;
         this.childVM = this.nextChildVM;
+        if(this.previousChildVM) {
+            this.previousChildVM.$destroy();
+        }
+        this.previousChildVM = null;
+        this.vm.$emit('view:transitionComplete');
     }
 };
