@@ -54,7 +54,6 @@ function init() {
             router.on('router:update', this.onRouteUpdate.bind(this));
 
             router.addRoute(require('./views/sections/home/home').route);
-            router.addRoute(require('./views/sections/about/about').route);
             router.setDefaultRoute('home');
         },
 
