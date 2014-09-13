@@ -15,16 +15,13 @@
  */
 
 var Vue = require('vue'),
-    debug = require('vue-debug'),
-    query = require('vue-query'),
     router = require('./router'),
     TweenMax = require('TweenMax');
 
-require('TweenMax.ScrollToPlugin'); // Add scrollToPlugin to TweenMax
-TweenLite.defaultEase = Expo.easeOut; // So I don't have to write it every time
-
-Vue.use(debug); // Add Vue.log method
-Vue.use(query); // Add this.$findOne, this.$find, this.add/removeClass to any Vue instance
+/*
+    Plugins, lib config...
+ */
+require('./imports');
 
 function init() {
     var app = new Vue({

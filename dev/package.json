@@ -1,6 +1,6 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "A gulp + sass + vuejs boilerplate.",
   "main": "index.js",
   "repository": {
@@ -70,6 +70,7 @@
     "gulp-streamify": "0.0.5"
   },
   "dependencies": {
+    "vue-el": "*",
     "extend": "*",
     "vue": "~0.10.5",
     "superagent": "~0.18.1",

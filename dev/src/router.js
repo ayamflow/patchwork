@@ -93,5 +93,13 @@ module.exports = extend({
             }
         });
         return id;
+    },
+
+    /*
+        Manually set the path.
+        Allow to press the `back`/`forward` buttons
+     */
+    update: function(path) {
+        page.show(path, null, false);
     }
 }, new EventEmitter());
