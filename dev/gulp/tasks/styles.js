@@ -2,7 +2,10 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
     handleErrors = require('../utils/handleErrors'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    minifyCSS = require('gulp-minify-css');
+
+var env = argv.env != "production";
 
 gulp.task('styles', function() {
     gulp.src('./sass/styles.scss')
@@ -13,5 +16,6 @@ gulp.task('styles', function() {
     }))
     .on('error', handleErrors)
     .pipe(autoprefixer())
+    .pipe(env ? gutil.noop() : minifyCSS())
     .pipe(gulp.dest('./build/'));
 });

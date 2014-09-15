@@ -67,7 +67,8 @@
     "debounce": "*",
     "vue": "^0.10.6",
     "yargs": "*",
-    "gulp-streamify": "0.0.5"
+    "gulp-streamify": "0.0.5",
+    "gulp-minify-css": "~0.3.8"
   },
   "dependencies": {
     "vue-el": "*",
