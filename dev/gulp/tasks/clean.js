@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
-    clean = require('gulp-clean');
+    del = require('del');
 
-gulp.task('clean', function () {
-    return gulp.src('./build', {read: false})
-        .pipe(clean());
+gulp.task('clean', function (cb) {
+    del(['./build'], cb);
 });

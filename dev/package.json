@@ -57,7 +57,7 @@
     "gulp-notify": "^1.4.0",
     "vue-debug": "*",
     "html-browserify": "*",
-    "gulp-clean": "*",
+    "del": "*",
     "gulp-jshint": "^1.8.2",
     "gulp-util": "^3.0.0",
     "gulp-uglify": "*",
