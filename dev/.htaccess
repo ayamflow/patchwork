@@ -2,15 +2,6 @@ Options +FollowSymlinks
 RewriteEngine On
 RewriteBase /
 
-# URL rewrite for SEO/Snapshots
-# RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(.*)$
-# RewriteRule ^$ /snapshots/index.html? [L,NC]
-# RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(.*)$
-# RewriteRule ^(.*)$ /snapshots/$1.html? [L,NC]
-
-# RewriteCond %{REQUEST_FILENAME} !snapshots
-# RewriteCond %{REQUEST_FILENAME} !_escaped_fragment_
-
 # Rewrite everything (except file or directory) to index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -20,6 +11,11 @@ RewriteRule ^(.+)$ index.html [L]
 # AddType video/mp4 .mp4 .m4v
 # AddType video/ogg .ogv
 # AddType video/webm .webm
+
+AddType application/vnd.ms-fontobject eot
+AddType font/truetype ttf
+AddType font/opentype otf
+AddType application/x-font-woff woff
 
 # Add GZIP compression
 AddOutputFilterByType DEFLATE text/plain
