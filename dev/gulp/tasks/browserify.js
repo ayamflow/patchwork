@@ -23,7 +23,8 @@ gulp.task('browserify', function()
     {
         cache: {},
         packageCache: {},
-        debug: env
+        debug: env,
+        fullPaths: true
     }),
     file = 'build.js',
     folder = './build/';
