@@ -1,0 +1,21 @@
+header{
+  background-color: #fff;
+  position: relative;
+  height: 50px;
+  color: #000;
+  nav{
+    ul{
+      list-style: none;
+      li{
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+    a{
+      color: #000;
+      &.current{
+        text-decoration: underline;
+      }
+    }
+  }
+}

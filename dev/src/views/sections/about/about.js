@@ -4,14 +4,11 @@ var extend = require('extend'),
     section = require('base/section');
 
 module.exports = extend(true, {}, section, {
-    template: require('./home.html'),
+    template: require('./about.html'),
     route: {
-        id: 'home',
+        id: 'about',
         transitionMode: 'outAndAfterIn',
-        path: '/home'
-    },
-    data: {
-        name: 'home'
+        path: '/about'
     },
     methods: {
         insertTweens: function() {

@@ -1,6 +1,6 @@
 /*
     Bourbon imports
-    
+
     Bourbon mixins aren't not used but it is a dependency for Neat
     Neat is a simple grid system
     Grid-settings is the configuration file for Neat
@@ -34,3 +34,6 @@
     Sections and components styles
  */
 @import "src/views/sections/home/home";
+@import "src/views/sections/about/about";
+@import "src/views/layout/header/header";
+@import "src/views/layout/footer/footer";

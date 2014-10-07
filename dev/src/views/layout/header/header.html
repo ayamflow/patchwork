@@ -1,0 +1,11 @@
+
+I am the header
+
+<nav>
+  <ul>
+    <li v-repeat="page: pages">
+      <a href="/{{page.link}}" v-class="current:currentPage == page.link">{{page.name}}</a>
+    </li>
+
+  </ul>
+</nav>
