@@ -5,9 +5,6 @@ module.exports = {
     methods: {
 
     },
-    data:{
-
-    },
     ready: function() {
 
     }

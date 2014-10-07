@@ -14,7 +14,7 @@ var Vue = require('vue'),
     viewport = require('common/directives/viewport'),
     TweenMax = require('TweenMax'),
     debugApp = require('common/debug');
-
+    
 /*
     TweenMax
 */
@@ -27,4 +27,4 @@ TweenLite.defaultEase = Expo.easeOut; // So I don't have to write it every time
 if(debugApp) Vue.use(debug); // Add Vue.log method
 Vue.use(el); // v-el directive to avoid selecting nodes in JS
 Vue.use(query); // Add this.$findOne, this.$find, this.add/removeClass to any Vue instance
-Vue.directive('viewport', require('./common/directives/viewport'));
+Vue.directive('viewport', require('./common/directives/v-viewport'));

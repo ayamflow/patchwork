@@ -28,35 +28,16 @@ function init() {
         el: 'body',
         data: {
             currentPage: null, // Current page id, used by v-pw-view
-            context: {}, // reference to the router context
-            home:{
-                name: 'home'
-            },
-            about:{
-                name: 'about'
-            },
-            pages:[
-                    {
-                      name:'home section',
-                      link:'home'
-                    },
-                    {
-                      name:'about section',
-                      link:'about'
-                    }
-                ]
+            context: {} // reference to the router context
         },
 
         components: {
             /* LAYOUT */
-            'pw-header': require('./views/layout/header/header'),
-            'pw-footer': require('./views/layout/footer/footer'),
 
             /* COMPONENTs */
 
             /* PAGES */
-            'home': require('./views/sections/home/home'),
-            'about': require('./views/sections/about/about')
+            'home': require('./views/sections/home/home')
 
             /* COMMON */
 
@@ -68,11 +49,9 @@ function init() {
 
         ready: function() {
             router.on('router:update', this.onRouteUpdate.bind(this));
+
             router.addRoute(require('./views/sections/home/home').route);
-            router.addRoute(require('./views/sections/about/about').route);
             router.setDefaultRoute('home');
-
-
         },
 
         methods: {

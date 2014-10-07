@@ -11,17 +11,17 @@ module.exports = extend(true, {}, section, {
         path: '/home'
     },
     data: {
-        name: 'home'
+
     },
     methods: {
         insertTweens: function() {
-            this.tlTransition.fromTo(this.$el, 0.7, {alpha: 0, scale: 0.5}, {alpha: 1, scale: 1, ease: Cubic.easeInOut}, 0.4);
+            this.tlTransition.fromTo(this.$el, 0.7, {alpha: 0, y: 50}, {alpha: 1, y: 0, ease: Expo.easeOut}, 0.4);
         },
         beforeTransitionIn: function() {
 
         }
     },
-
+    
     ready: function() {
 
     },
