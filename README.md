@@ -37,7 +37,7 @@ Each section needs to be passed a `route` hash as follows:
 
 ```
 /*
-    Route params  
+    Route params
     Used by the router and the custom v-view
     id: page slug
     transitionMode: timing (see view for infos)
@@ -51,6 +51,9 @@ route: {
 ```
 
 ### Routing
+The router is based on [page.js](https://github.com/visionmedia/page.js).
+You need a proper vhost configuration for local development (e.g. http://patchwork.dev).
+
 The different routes can be configured in the main file:
 
 ```
