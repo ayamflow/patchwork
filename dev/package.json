@@ -68,7 +68,8 @@
     "vue": "^0.10.6",
     "yargs": "*",
     "gulp-streamify": "0.0.5",
-    "gulp-minify-css": "~0.3.8"
+    "gulp-minify-css": "~0.3.8",
+    "browser-sync": "~1.5.3"
   },
   "dependencies": {
     "vue-el": "*",

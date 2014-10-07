@@ -2,10 +2,10 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
+    argv = require('yargs').argv,
     handleErrors = require('../utils/handleErrors'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifyCSS = require('gulp-minify-css'),
-    argv = require('yargs').argv;
+    minifyCSS = require('gulp-minify-css');
 
 var env = argv.env != "production";
 
