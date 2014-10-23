@@ -6,6 +6,14 @@ It allows to quickly build prototypes or websites using gulp, sass, vue.js and G
 
 The boilerplate/workflow part is totally modular. For instance, you can easily switch node-sass for gem-sass or stylus.
 
+### About "next" branch
+Matching Vue.js next branch, this is where I'll experiment with a more modular approach, benefiting from the new features of Vue.
+
+Patchwork will gain mixins allowing to give more features to a VM: auto-binding of methods, preloading, ...
+The router will become to a more angularesque-router based on a directive (pw-router). Routes will be passed to the $root VM constructor.
+The goal is to make Patchwork a library instead of a framework, make it more modular, less coupled, and easily extensible.
+
+
 #### What's included
 - node-sass for lightning-fast styles compiling
 - browserify + watchify for node-style `require`

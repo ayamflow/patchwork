@@ -1,7 +1,8 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "0.1.3",
-  "description": "A gulp + sass + vuejs boilerplate.",
+  "version": "0.2.0",
+  "description": "Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js
+It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -35,14 +36,12 @@
   "browserify-shim": {
     "TweenMax": "TweenMax",
     "fit": "fit",
-    "forEach": "forEach",
-    "vue-query": "vue-query"
+    "forEach": "forEach"
   },
   "napa": {
     "greensock": "greensock/GreenSock-JS",
     "fit": "soulwire/fit.js",
-    "foreach.js": "toddmotto/foreach",
-    "vue-query": "ayamflow/vue-query"
+    "foreach.js": "toddmotto/foreach"
   },
   "devDependencies": {
     "gulp": "*",
@@ -74,10 +73,10 @@
   "dependencies": {
     "vue-el": "*",
     "extend": "*",
-    "vue": "~0.10.5",
+    "vue": "~0.11.0-rc2",
     "superagent": "~0.18.1",
     "page": "~1.3.7",
-    "bindall-standalone": "~1.0.4",
+    "bindall-standalone": "~1.0.5",
     "component-emitter": "~1.1.3"
   },
   "scripts": {
