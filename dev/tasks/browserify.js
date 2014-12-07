@@ -19,7 +19,7 @@ var env = argv.env != "production";
 
 gulp.task('browserify', function()
 {
-    var b = browserify("./src/index.js",
+    var b = browserify("./src/boot/index.js",
     {
         cache: {},
         packageCache: {},
@@ -31,16 +31,13 @@ gulp.task('browserify', function()
 
     var bundler = global.isWatching ? watchify(b) : b;
 
-    bundler.plugin(remapify, [{
-        src: './**/*.js',
-        expose: 'common',
-        cwd: __dirname + '/../../src/common/'
-    },
-    {
-        src: './**/*.js',
-        expose: 'base',
-        cwd: __dirname + '/../../src/base/'
-    }]);
+    bundler.plugin(remapify, ['components', 'directives', 'filters', 'mixins', 'sections', 'utils'].map(function(folder) {
+        return {
+            src: './**/*.js',
+            expose: folder,
+            cwd: process.cwd() + '/src/' + folder
+        };
+    }));
 
     var bundle = function() {
         bundleLogger.start();

@@ -8,10 +8,9 @@
  */
 
 var Vue = require('vue'),
-    viewport = require('common/directives/viewport'),
+    viewport = require('directives/viewport'),
     route = require('vue-route'),
-    TweenMax = require('TweenMax'),
-    debugApp = require('common/debug');
+    TweenMax = require('TweenMax');
 
 /*
     TweenMax
@@ -21,5 +20,5 @@ TweenLite.defaultEase = Expo.easeOut; // So I don't have to write it every time
 /*
     Vue plugins
  */
-Vue.directive('viewport', require('./common/directives/v-viewport'));
+Vue.directive('viewport', viewport);
 Vue.use(route);

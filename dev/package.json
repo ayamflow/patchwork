@@ -1,8 +1,7 @@
 {
   "name": "patchwork-boilerplate",
   "version": "1.0.0",
-  "description": "Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js
-It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.",
+  "description": "Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js. It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.",
   "main": "index.js",
   "repository": {
     "type": "git",

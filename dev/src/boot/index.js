@@ -14,9 +14,7 @@
     and start on page load.
  */
 
-var Vue = require('vue'),
-    router = require('./router'),
-    TweenMax = require('TweenMax');
+var Vue = require('vue');
 
 /*
     Plugins, lib config...
@@ -41,7 +39,7 @@ function init() {
             /* COMPONENTs */
 
             /* SECTIONS */
-            'home-section': require('./views/sections/home/home')
+            'home-section': require('sections/home/home')
         },
 
         ready: function() {
