@@ -1,6 +1,6 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js
 It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.",
   "main": "index.js",
@@ -10,11 +10,11 @@ It allows to quickly build prototypes or websites using gulp, sass, vue.js and G
   },
   "keywords": [
     "boilerplate",
-    "vue.js",
     "gulp",
     "sass",
     "scss",
-    "starter"
+    "starter",
+    "vue.js"
   ],
   "author": "= <=>",
   "license": "MIT",
@@ -23,61 +23,62 @@ It allows to quickly build prototypes or websites using gulp, sass, vue.js and G
   },
   "browserify": {
     "transform": [
-      "html-browserify",
-      "browserify-shim"
+      "browserify-shim",
+      "html-browserify"
     ]
   },
   "browser": {
-    "TweenMax": "./node_modules/greensock/src/minified/TweenMax.min.js",
-    "TweenMax.ScrollToPlugin": "./node_modules/greensock/src/minified/plugins/ScrollToPlugin.min.js",
     "fit": "./node_modules/fit/fit.min.js",
-    "forEach": "./node_modules/foreach.js/dist/foreach.min.js"
+    "forEach": "./node_modules/foreach.js/dist/foreach.min.js",
+    "preloadjs": "./node_modules/preloadjs/lib/preloadjs-0.4.1.min.js",
+    "TweenMax": "./node_modules/greensock/src/minified/TweenMax.min.js"
   },
   "browserify-shim": {
-    "TweenMax": "TweenMax",
     "fit": "fit",
-    "forEach": "forEach"
+    "forEach": "forEach",
+    "preloadjs": "preloadjs",
+    "TweenMax": "TweenMax"
   },
   "napa": {
-    "greensock": "greensock/GreenSock-JS",
     "fit": "soulwire/fit.js",
-    "foreach.js": "toddmotto/foreach"
+    "foreach.js": "toddmotto/foreach",
+    "greensock": "greensock/GreenSock-JS",
+    "preloadjs": "CreateJS/PreloadJS"
   },
   "devDependencies": {
-    "gulp": "*",
-    "watchify": "*",
-    "gulp-plumber": "*",
-    "gulp-autoprefixer": "0.0.8",
-    "gulp-sass": "*",
-    "vinyl-source-stream": "*",
-    "napa": "*",
+    "debounce": "*",
+    "del": "*",
+    "jshint-stylish": "*",
     "browserify": "^5.9.1",
     "browserify-shim": "*",
-    "gulp-notify": "^1.4.0",
-    "vue-debug": "*",
-    "html-browserify": "*",
-    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "0.0.8",
     "gulp-jshint": "^1.8.2",
-    "gulp-util": "^3.0.0",
+    "gulp-minify-css": "~0.3.8",
+    "gulp-notify": "^1.4.0",
+    "gulp-plumber": "*",
+    "gulp-sass": "*",
+    "gulp-streamify": "0.0.5",
     "gulp-uglify": "*",
+    "gulp-util": "^3.0.0",
+    "html-browserify": "*",
+    "napa": "*",
     "pretty-hrtime": "*",
     "remapify": "*",
-    "jshint-stylish": "*",
-    "debounce": "*",
-    "vue": "^0.10.6",
+    "vinyl-source-stream": "*",
     "yargs": "*",
-    "gulp-streamify": "0.0.5",
-    "gulp-minify-css": "~0.3.8",
-    "browser-sync": "~1.5.3"
+    "watchify": "*"
   },
   "dependencies": {
-    "vue-el": "*",
-    "extend": "*",
-    "vue": "~0.11.0-rc2",
-    "superagent": "~0.18.1",
-    "page": "~1.3.7",
     "bindall-standalone": "~1.0.5",
-    "component-emitter": "~1.1.3"
+    "extend": "*",
+    "page": "~1.3.7",
+    "superagent": "~0.18.1",
+    "vue": "^0.11.3",
+    "vue-route": "^1.2.0",
+    "windowsill": "^1.0.6",
+    "vue-resize-mixin": "^1.0.1",
+    "vue-loader-mixin": "^1.0.1"
   },
   "scripts": {
     "install": "napa"

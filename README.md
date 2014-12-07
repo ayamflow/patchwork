@@ -1,6 +1,17 @@
 patchwork
 =========
 
+## NEXT TODO
+> Modularize
+- v-route (OK)
+- v-route + transition timings
+- mixins for every existing feature from patchwork
+- utils
+- simple router if not using v-route
+
+The goal -> Vue + patchwork rather than Patchwork(Vue)
+
+
 Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js
 It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.
 
