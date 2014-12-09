@@ -11,8 +11,8 @@ var gulp = require('gulp'),
     remapify = require('remapify'),
     gStreamify = require('gulp-streamify'),
     uglify = require('gulp-uglify'),
-    bundleLogger = require('../utils/bundleLogger'),
-    handleErrors = require('../utils/handleErrors'),
+    bundleLogger = require('./utils/bundleLogger'),
+    handleErrors = require('./utils/handleErrors'),
     source = require('vinyl-source-stream');
 
 var env = argv.env != "production";
@@ -27,7 +27,7 @@ gulp.task('browserify', function()
         fullPaths: true
     }),
     file = 'build.js',
-    folder = './static/build/';
+    folder = './deploy/build/';
 
     var bundler = global.isWatching ? watchify(b) : b;
 

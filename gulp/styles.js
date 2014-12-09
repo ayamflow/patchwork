@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber'),
     sass = require('gulp-sass'),
-    handleErrors = require('../utils/handleErrors'),
+    handleErrors = require('./utils/handleErrors'),
     autoprefixer = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-minify-css'),
     argv = require('yargs').argv;
@@ -19,5 +19,5 @@ gulp.task('styles', function() {
     .on('error', handleErrors)
     .pipe(autoprefixer())
     .pipe(env ? gutil.noop() : minifyCSS())
-    .pipe(gulp.dest('./static/build/'));
+    .pipe(gulp.dest('./deploy/build/'));
 });

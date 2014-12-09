@@ -1,6 +1,6 @@
 {
   "name": "patchwork-boilerplate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Patchwork is a mix between a boilerplate and a miniframework built on top of Vue.js. It allows to quickly build prototypes or websites using gulp, sass, vue.js and GSAP.",
   "main": "index.js",
   "repository": {
@@ -52,6 +52,7 @@
     "del": "*",
     "gulp": "*",
     "gulp-autoprefixer": "0.0.8",
+    "gulp-copy": "0.0.2",
     "gulp-jshint": "^1.8.2",
     "gulp-minify-css": "~0.3.8",
     "gulp-notify": "^1.4.0",
@@ -77,8 +78,7 @@
     "vue": "^0.11.3",
     "vue-route": "^1.2.0",
     "windowsill": "^1.0.6",
-    "vue-resize-mixin": "^1.0.1",
-    "vue-loader-mixin": "^1.0.1"
+    "vue-resize-mixin": "^1.0.1"
   },
   "scripts": {
     "install": "napa"
