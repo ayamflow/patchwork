@@ -13,7 +13,6 @@ Breaking changes since v0.2:
 - Flatter folders/files tree.
 - Added some mixins for Vue (loader, [resize](https://github.com/nk-components/vue-resize-mixin), bind).
 - Added /static folder for all static stuff (.htaccess, index.html, images...)
-- Added /deploy and build everything into it so it can be deployable, just drag'n'drop FTP or git deploy.
 - Simple router component if you need specific control that `v-route` doesn't offer (I'm thinking with prototyping in mind and quick hacking).
 - Simpler, lighter and more modular structure since it now relies on more external components. Easier to dive in.
 - Transitions between pages are now natively handled by `v-route` so no need to extend a custom class.
@@ -38,6 +37,3 @@ The `import.js` allows to configure the different libraries, for instance instal
 - `/src/sections` contains the main sections of the website. For subsections and ui components, use `/src/components`.
 
 - `/src/utils` offer some additional utils like browser sniffing, the folder can basically be replaced with lodash + modernizr. It has an additional `debug.js` file containing some flags, and `simple-router.js` which is a light wrapper around page.js, if you need access to a more low-level router.
-
-## Todo
-- workflow for static assets (images, json, fonts) -> copy to /deploy, imageoptim/svgo, ...

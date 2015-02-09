@@ -6,9 +6,12 @@ var gulp = require('gulp'),
 gulp.task('serve', ['clean', 'jshint', 'styles', 'watch'], function () {
     browserSync.init(null, {
         watchTask: true,
-        proxy: "patchwork.dev", //REMPLACE WITH YOUR VHOST
-        notify: false
+        notify: false,
+        server: {
+          baseDir: './static/',
+          index: 'index.html'
+        }
     });
 
-    gulp.watch(['./build/**/*.*'], reload);
+    gulp.watch(['./static/build/**/*.*'], reload);
 });

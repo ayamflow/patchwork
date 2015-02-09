@@ -19,5 +19,5 @@ gulp.task('styles', function() {
     .on('error', handleErrors)
     .pipe(autoprefixer())
     .pipe(env ? gutil.noop() : minifyCSS())
-    .pipe(gulp.dest('./deploy/build/'));
+    .pipe(gulp.dest('./static/build/'));
 });

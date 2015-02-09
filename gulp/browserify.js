@@ -27,7 +27,7 @@ gulp.task('browserify', function()
         fullPaths: true
     }),
     file = 'build.js',
-    folder = './deploy/build/';
+    folder = './static/build/';
 
     var bundler = global.isWatching ? watchify(b) : b;
 
